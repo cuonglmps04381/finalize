@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <div th:fragment="footer">
+            <section class="main-footer container padding-0">
+                <div class="footer-info">
+                    <div class="row">
+                        <div class="item col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <h4 class="title">customer service</h4>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Affiliate</a></li>
+                                <li><a href="#">Responsibility</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="item col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <h4 class="title">Help</h4>
+                            <ul>
+                                <li><a href="#">Returns</a></li>
+                                <li><a href="#">Shipping</a></li>
+                                <li><a href="#">FAQ</a></li>
+                                <li><a href="#">Size Guide</a></li>
+                                <li><a href="#">Track Orders</a></li>
+                            </ul>
+                        </div>
+                        <div class="item col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <h4 class="title">Follow us</h4>
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a></li>
+                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i>Twitter</a></li>
+                                <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i>Pinterest</a></li>
+                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i>Google+</a></li>
+                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i>Instagram</a></li>
+                            </ul>
+                        </div>
+                        <div class="item col-lg-2 col-md-2 col-sm-2 col-xs-6"></div>
+                        <div class="item newsletter col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <h4 class="title">Newsletter</h4>
+                            <span>Subscribe now to get daily updates</span>
+                            <form>
+                                <input id="newsletter" type="text" name="new" class="form-new" value="Your email address" onclick="this.value=='Your email address'?this.value='':''" onblur="this.value==''?this.value='Your email address':''" maxlength="128" >
+                                <button>subscribe</button>
+                            </form>
+                            <span>Don’t worry we don’t spam</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
+                    <div class="row">
+                        <div class="left col-lg-6 col-md-6 col-sm-6 col-xs-12">Copyright © 2016  <a href="http://cleversoft.co/">ZooTemplate.</a> All rights reserved.</div>
+                        <div class="right col-lg-6 col-md-6 col-sm-6 col-xs-12">Any questions? Let us help you.<br>Call us: <a href="tel:0123546868">+84 12354 6868</a></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+</body>
+</html>

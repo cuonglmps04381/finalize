@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout-user/layout}">
+<head>
+</head>
+<body>
+<div layout:fragment="content">
+    <!-- MAIN -->
+    <section class="main-content">
+        <!-- MAIN SLIDER -->
+        <div class="wrap-main-slide container padding-0">
+            <div class="main-slide">
+                <div id="carousel-main-slide" class="carousel slide " data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-main-slide" data-slide-to="0" class="active"></li>
+                        <li data-target="#carousel-main-slide" data-slide-to="1"></li>
+                    </ol>
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <div class="main-slide-content" style="background-image:url('./images/slide_image2.jpg'); background-size: cover; background-repeat: no-repeat; width: 100%; background-position: center center;">
+                                <div class="caption-slide">
+                                    <h2 class="style1">New Collection<br>Fall 2016</h2>
+                                    <a class="button" href="javascript:void(0)">shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="main-slide-content" style="background-image:url('./images/slide_image3.jpg'); background-size: cover; background-repeat: no-repeat; width: 100%; background-position: center center;">
+                                <div class="caption-slide style2">
+                                    <h2 class="style2">Top 5 Collection<br>of Fall 2016</h2>
+                                    <a class="button" href="javascript:void(0)">shop now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Controls -->
+                <div class="wrap-control">
+                    <a class=" nav-control left-control" href="#carousel-main-slide" role="button" data-slide="prev">
+                        <i class="clever-icon-preview cs-font"></i>
+                    </a>
+                    <a class="nav-control right-control" href="#carousel-main-slide" role="button" data-slide="next">
+                        <i class="clever-icon-next cs-font"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <!-- END MAIN SLIDER -->
+
+        <!-- BOX IMAGES -->
+        <div class="box-content container padding-0">
+            <div class="item-box first col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="img-box">
+                    <img src="./images/box_content_01.jpg" alt=""/>
+                </div>
+                <div class="description">
+                    <h2><a href="">silk scarf</a></h2>
+                    <span>16 Items</span>
+                    <a href="" class="btn">shop now</a>
+                </div>
+            </div>
+
+            <div class="item-box col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="img-box">
+                    <img src="./images/box_content_02.jpg" alt=""/>
+                </div>
+                <div class="description">
+                    <h2><a href="">leather bag</a></h2>
+                    <span>37 Items</span>
+                    <a href="" class="btn">shop now</a>
+                </div>
+            </div>
+
+            <div class="item-box col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="img-box">
+                    <img src="./images/box_content_03.jpg" alt=""/>
+                </div>
+                <div class="description">
+                    <h2><a href="">dress watch</a></h2>
+                    <span>25 Items</span>
+                    <a href="" class="btn">shop now</a>
+                </div>
+            </div>
+
+            <div class="item-box last col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="img-box">
+                    <img src="./images/box_content_04.jpg" alt=""/>
+                </div>
+                <div class="description">
+                    <h2><a href="">sport bike</a></h2>
+                    <span>09 Items</span>
+                    <a href="" class="btn">shop now</a>
+                </div>
+            </div>
+
+        </div>
+        <!-- END BOX IMAGES -->
+
+        <!-- Carousel product new arrivals -->
+        <div class="carousel-product container padding-0">
+            <div class="products-grid new-arrivals">
+                <div class="row"><div class="widget-title col-xs-12"><h2><span>new arrivals</span></h2></div></div>
+                <div class="row">
+                    <div id="owl-arrivals" class="owl-carousel owl-theme container">
+                        <div class="product-item">
+                            <div class="top-product-item">
+                                <a class="img-product" href="./product-detail.html">
+                                    <img src="./images/ione-product.jpg" class="img-responsive" alt="" />
+                                    <span class="image-hover"><img class="img-responsive" src="./images/ione-product.jpg" alt="" /></span>
+                                </a>
+                                <div class="sale">
+                                    <label>-39%</label>
+                                </div>
+                                <div class="addto-wishlist">
+                                    <a href="./product-detail.html">
+                                        <i class="fa fa-heart-o"></i>
+                                        <span class="tooltip">Add to wishlist</span>
+                                    </a>
+                                </div>
+                                <div class="quickview" ><a href="./product-detail.html">Quick View</a></div>
+                            </div>
+                            <div class="bottom-product-item">
+                                <h5 class="product-name"><a href="./product-detail.html">Denim Look Wrap Midi Dress</a></h5>
+                                <div class="price-box">
+                                    <span class="old-price price">$96.00</span>
+                                    <span class="special-price price">$88.00</span>
+                                </div>
+                                <div class="rating-star"></div>
+                            </div>
+                        </div>
+
+                        <div class="product-item">
+                            <div class="top-product-item">
+                                <a class="img-product" href="./product-detail.html">
+                                    <img src="./images/ione-product-1.jpg" class="img-responsive" alt="" />
+                                    <span class="image-hover"><img class="img-responsive" src="./images/ione-product-1.jpg" alt="" /></span>
+                                </a>
+                                <div class="addto-wishlist">
+                                    <a href="./product-detail.html">
+                                        <i class="fa fa-heart-o"></i>
+                                        <span class="tooltip">Add to wishlist</span>
+                                    </a>
+                                </div>
+                                <div class="quickview" ><a href="./product-detail.html">Quick View</a></div>
+                            </div>
+                            <div class="bottom-product-item">
+                                <h5 class="product-name"><a href="./product-detail.html">Denim Look Wrap Midi Dress</a></h5>
+                                <div class="price-box">
+                                    <span class="old-price price">$96.00</span>
+                                    <span class="special-price price">$88.00</span>
+                                </div>
+                                <div class="rating-star"></div>
+                            </div>
+                        </div>
+
+                        <div class="product-item">
+                            <div class="top-product-item">
+                                <a class="img-product" href="./product-detail.html">
+                                    <img src="./images/ione-product-2.jpg" class="img-responsive" alt="" />
+                                    <span class="image-hover"><img class="img-responsive" src="./images/ione-product-2.jpg" alt="" /></span>
+                                </a>
+                                <div class="addto-wishlist">
+                                    <a href="./product-detail.html">
+                                        <i class="fa fa-heart-o"></i>
+                                        <span class="tooltip">Add to wishlist</span>
+                                    </a>
+                                </div>
+                                <div class="quickview" ><a href="./product-detail.html">Quick View</a></div>
+                            </div>
+                            <div class="bottom-product-item">
+                                <h5 class="product-name"><a href="./product-detail.html">Denim Look Wrap Midi Dress</a></h5>
+                                <div class="price-box">
+                                    <span class="old-price price">$96.00</span>
+                                    <span class="special-price price">$88.00</span>
+                                </div>
+                                <div class="rating-star"></div>
+                            </div>
+                        </div>
+
+                        <div class="product-item">
+                            <div class="top-product-item">
+                                <a class="img-product" href="./product-detail.html">
+                                    <img src="./images/ione-product-3.jpg" class="img-responsive" alt="" />
+                                    <span class="image-hover"><img class="img-responsive" src="./images/ione-product-3.jpg" alt="" /></span>
+                                </a>
+                                <div class="sale">
+                                    <label>-39%</label>
+                                </div>
+                                <div class="addto-wishlist">
+                                    <a href="./product-detail.html">
+                                        <i class="fa fa-heart-o"></i>
+                                        <span class="tooltip">Add to wishlist</span>
+                                    </a>
+                                </div>
+                                <div class="quickview" ><a href="./product-detail.html">Quick View</a></div>
+                            </div>
+                            <div class="bottom-product-item">
+                                <h5 class="product-name"><a href="./product-detail.html">Denim Look Wrap Midi Dress</a></h5>
+                                <div class="price-box">
+                                    <span class="old-price price">$96.00</span>
+                                    <span class="special-price price">$88.00</span>
+                                </div>
+                                <div class="rating-star"></div>
+                            </div>
+                        </div>
+
+                        <div class="product-item">
+                            <div class="top-product-item">
+                                <a class="img-product" href="./product-detail.html">
+                                    <img src="./images/ione-product-4.jpg" class="img-responsive" alt="" />
+                                    <span class="image-hover"><img class="img-responsive" src="./images/ione-product-4.jpg" alt="" /></span>
+                                </a>
+                                <div class="addto-wishlist">
+                                    <a href="./product-detail.html">
+                                        <i class="fa fa-heart-o"></i>
+                                        <span class="tooltip">Add to wishlist</span>
+                                    </a>
+                                </div>
+                                <div class="quickview" ><a href="./product-detail.html">Quick View</a></div>
+                            </div>
+                            <div class="bottom-product-item">
+                                <h5 class="product-name"><a href="./product-detail.html">Denim Look Wrap Midi Dress</a></h5>
+                                <div class="price-box">
+                                    <span class="old-price price">$96.00</span>
+                                    <span class="special-price price">$88.00</span>
+                                </div>
+                                <div class="rating-star"></div>
+                            </div>
+                        </div>
+
+                        <div class="product-item">
+                            <div class="top-product-item">
+                                <a class="img-product" href="./product-detail.html">
+                                    <img src="./images/ione-product-5.jpg" class="img-responsive" alt="" />
+                                    <span class="image-hover"><img class="img-responsive" src="./images/ione-product-5.jpg" alt="" /></span>
+                                </a>
+                                <div class="addto-wishlist">
+                                    <a href="./product-detail.html">
+                                        <i class="fa fa-heart-o"></i>
+                                        <span class="tooltip">Add to wishlist</span>
+                                    </a>
+                                </div>
+                                <div class="quickview" ><a href="./product-detail.html">Quick View</a></div>
+                            </div>
+                            <div class="bottom-product-item">
+                                <h5 class="product-name"><a href="./product-detail.html">Denim Look Wrap Midi Dress</a></h5>
+                                <div class="price-box">
+                                    <span class="old-price price">$96.00</span>
+                                    <span class="special-price price">$88.00</span>
+                                </div>
+                                <div class="rating-star"></div>
+                            </div>
+                        </div>
+
+                        <div class="product-item">
+                            <div class="top-product-item">
+                                <a class="img-product" href="./product-detail.html">
+                                    <img src="./images/ione-product-6.jpg" class="img-responsive" alt="" />
+                                    <span class="image-hover"><img class="img-responsive" src="./images/ione-product-6.jpg" alt="" /></span>
+                                </a>
+                                <div class="addto-wishlist">
+                                    <a href="./product-detail.html">
+                                        <i class="fa fa-heart-o"></i>
+                                        <span class="tooltip">Add to wishlist</span>
+                                    </a>
+                                </div>
+                                <div class="quickview" ><a href="./product-detail.html">Quick View</a></div>
+                            </div>
+                            <div class="bottom-product-item">
+                                <h5 class="product-name"><a href="./product-detail.html">Denim Look Wrap Midi Dress</a></h5>
+                                <div class="price-box">
+                                    <span class="old-price price">$96.00</span>
+                                    <span class="special-price price">$88.00</span>
+                                </div>
+                                <div class="rating-star"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End carousel product new arrivals -->
+
+        <!-- FOLLOW US @ INSTAGRAM -->
+        <div class="our-collections">
+            <div class="title"><a href="">FOLLOW US @ INSTAGRAM</a></div>
+            <div id="owl-our-collections" class="owl-carousel owl-theme">
+                <div class="item">
+                    <div class="figure effect-sadie"><a href=""><img src="./images/00.jpg" alt="" /></a></div>
+                </div>
+                <div class="item">
+                    <div class="figure effect-sadie"><a href=""><img src="./images/01.jpg" alt="" /></a></div>
+                </div>
+                <div class="item">
+                    <div class="figure effect-sadie"><a href=""><img src="./images/02.jpg" alt="" /></a></div>
+                </div>
+                <div class="item">
+                    <div class="figure effect-sadie"><a href=""><img src="./images/03.jpg" alt="" /></a></div>
+                </div>
+                <div class="item">
+                    <div class="figure effect-sadie"><a href=""><img src="./images/04.jpg" alt="" /></a></div>
+                </div>
+                <div class="item">
+                    <div class="figure effect-sadie"><a href=""><img src="./images/05.jpg" alt="" /></a></div>
+                </div>
+                <div class="item">
+                    <div class="figure effect-sadie"><a href=""><img src="./images/06.jpg" alt="" /></a></div>
+                </div>
+                <div class="item">
+                    <div class="figure effect-sadie"><a href=""><img src="./images/07.jpg" alt="" /></a></div>
+                </div>
+            </div>
+        </div>
+        <!-- END FOLLOW US @ INSTAGRAM -->
+
+    </section>
+    <!-- END MAIN -->
+</div>
+</body>
+</html>

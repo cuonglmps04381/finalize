@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <link th:href="@{/css/icon-theme.css}" rel="stylesheet"/>
+    <link th:href="@{/font/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/ipple.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/menu.css}" rel="stylesheet"/>
+    <link th:href="@{/css/carousel.css}" rel="stylesheet"/>
+    <link th:href="@{/css/theme.css}" rel="stylesheet"/>
+    <link th:href="@{/css/transitions.css}" rel="stylesheet"/>
+    <link th:href="@{/css/responsives.css}" rel="stylesheet"/>
+    <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link th:href="@{/css/repples.min.css}" rel="stylesheet"/>
+
+    <!-- Bootstrap -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <!-- Jquery -->
+    <script  type="text/javascript" th:src="@{/js/jquery-3.1.1.min.js}"></script>
+</head>
+<body>
+<div class="layout">
+    <div class="header">
+        <header>
+                <div th:replace="layout-user/header:: header"></div>
+        </header>
+    </div>
+
+    <div class="content">
+        <section>
+            <div  layout:fragment="content"> </div>
+        </section>
+    </div>
+
+    <div class="footer">
+            <footer>
+                <div>
+                    <div th:replace="layout-user/footer:: footer"></div>
+                </div>
+            </footer>
+    </div>
+
+    <div id="tool-setup">
+        <i class="setup fa fa-cogs" aria-hidden="true"></i>
+        <div class="content-setup">
+            <div class="content">
+                <h5 class="title">Setup block show/hide on page</h5>
+                <div class="show-hide-background-img">
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                    <label>Show/Hide Background Image</label>
+                    <button type="button">Show/Hide</button>
+                </div>
+                <div class="show-hide-slider">
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                    <label>Show/Hide Slider Images</label>
+                    <button type="button">Show/Hide</button>
+                </div>
+                <div class="show-hide-box-img">
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                    <label>Show/Hide Box Images</label>
+                    <button type="button">Show/Hide</button>
+                </div>
+                <div class="show-hide-new-arrivals">
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                    <label>Show/Hide New Arrivals</label>
+                    <button type="button">Show/Hide</button>
+                </div>
+                <div class="show-hide-instagram">
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                    <label>Show/Hide Instagram</label>
+                    <button type="button">Show/Hide</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script  type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script  type="text/javascript" th:src="@{/js/carousel.js}"></script>
+<script  type="text/javascript" th:src="@{/js/script.js}"></script>
+</body>
+</html>
