@@ -65,32 +65,29 @@ public class AdminController {
     public ModelAndView createNewUser(@Valid UserDTO userDTO, BindingResult bindingResult) throws IOException {
         try {
             ModelAndView modelAndView = new ModelAndView();
-            User userExists = userService.findUserByEmail(userDTO.getEmail());
-            if (userExists != null) {
-                bindingResult
-                        .rejectValue("email", "error.user",
-                                "There is already a user registered with the email provided");
-            }
-            if (bindingResult.hasErrors()) {
-                modelAndView.setViewName("layout-admin/register");
+            boolean valid = checkValidate(userDTO,bindingResult);
+            if (valid == true) {
+                    User userCreate = new User();
+                    userCreate.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
+                    userCreate.setRemovalFlag(true);
+                    Role userRole = roleRepository.findByRoleName("ADMIN");
+                    userCreate.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+                    userCreate.setCreatedDate(new Date());
+                    userCreate.setLastName(userDTO.getLastName());
+                    userCreate.setEmail(userDTO.getEmail());
+                    userCreate.setFirstName(userDTO.getFirstName());
+                    userCreate.setCreatedBy("admin");
+                    userCreate.setRemovalFlag(true);
+                    userCreate.setModifiedBy("admin");
+                    userCreate.setModifiedDate(new Date());
+                    userRepository.save(userCreate);
+                    modelAndView.addObject("successMessage", "User has been registered successfully");
+                    modelAndView.addObject("userDTO", new UserDTO());
+                    modelAndView.setViewName("layout-admin/register");
             } else {
-                User userCreate = new User();
-                userCreate.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
-                userCreate.setRemovalFlag(true);
-                Role userRole = roleRepository.findByRoleName("ADMIN");
-                userCreate.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-                userCreate.setCreatedDate(new Date());
-                userCreate.setLastName(userDTO.getLastName());
-                userCreate.setEmail(userDTO.getEmail());
-                userCreate.setFirstName(userDTO.getFirstName());
-                userCreate.setCreatedBy("admin");
-                userCreate.setRemovalFlag(true);
-                userCreate.setModifiedBy("admin");
-                userCreate.setModifiedDate(new Date());
-                userRepository.save(userCreate);
-                modelAndView.addObject("successMessage", "User has been registered successfully");
-                modelAndView.addObject("userDTO", new UserDTO());
-                modelAndView.setViewName("layout-admin/register");
+                if (bindingResult.hasErrors()) {
+                    modelAndView.setViewName("layout-admin/register");
+                }
             }
             return modelAndView;
         } catch (Exception e) {
@@ -98,6 +95,29 @@ public class AdminController {
         }
     }
 
+    public boolean checkValidate(UserDTO userDTO, BindingResult bindingResult) {
+        User userExists = userService.findUserByEmail(userDTO.getEmail());
+        if (userExists != null) {
+            bindingResult
+                    .rejectValue("email", "error.userDTO",
+                            "There is already a user registered with the email provided");
+            return false;
+        }
+        if (!userDTO.getRePassword().equals(userDTO.getPassword())) {
+            bindingResult
+                    .rejectValue("rePassword", "error.userDTO",
+                            "password not match pls change");
+            return false;
+        }
+
+        if (userDTO.isChecked() == false) {
+            bindingResult
+                    .rejectValue("checked", "error.userDTO",
+                            "pls check");
+            return false;
+        }
+        return true;
+    }
     @RequestMapping(value={"/admin/home"}, method = RequestMethod.GET)
     public ModelAndView home(){
         try {

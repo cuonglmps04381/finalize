@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import java.util.Date;
 import java.util.Set;
@@ -15,13 +18,27 @@ import java.util.Set;
 public class UserDTO {
 
     private Long id;
+
+    @Email(message = "*Please provide a valid Email")
+    @NotEmpty(message = "*Please provide an email")
     private String email;
+
+    @Length(min = 5, message = "*Your password must have at least 5 characters")
+    @NotEmpty(message = "*Please provide your password")
     private String password;
+
+    @NotEmpty(message = "*Please provide your firstName")
     private String firstName;
+
+    @NotEmpty(message = "*Please provide your lastName")
     private String lastName;
-    private boolean active;
-    private Date createDate;
-    private Date modifiedDate;
+
+    @Length(min = 5, message = "*Your password must have at least 5 characters")
+    @NotEmpty(message = "*Please provide your rePassword")
+    private String rePassword;
+
+    private boolean checked;
+
     private Set<RoleDTO> roleDTO;
 
 
@@ -29,7 +46,6 @@ public class UserDTO {
     public String toString() {
         return "User [id=" + id + ", email="
                 + email + ", password=" + password + ", firstName=" + firstName
-                + ", lastName=" + lastName + ", active=" + active + ", createDate="
-                + createDate + ", modifiedDate=" + modifiedDate + "]";
+                + ", lastName=" + lastName + ", checked=" + checked + "]";
     }
 }

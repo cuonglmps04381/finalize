@@ -31,20 +31,14 @@ public class User {
 	private Long userId;
 
 	@Column(name = "EMAIL", nullable = false)
-	@Email(message = "*Please provide a valid Email")
-	@NotEmpty(message = "*Please provide an email")
 	private String email;
 
-	@Length(min = 5, message = "*Your password must have at least 5 characters")
-	@NotEmpty(message = "*Please provide your password")
 	@Column(name = "PASSWORD", nullable = false)
 	private String password;
 
-	@NotEmpty(message = "*Please provide your firstName")
 	@Column(name = "FIRST_NAME", nullable = false)
 	private String firstName;
 
-	@NotEmpty(message = "*Please provide your lastName")
 	@Column(name = "LAST_NAME", nullable = false)
 	private String lastName;
 
