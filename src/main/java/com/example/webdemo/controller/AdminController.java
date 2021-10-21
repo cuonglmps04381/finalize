@@ -127,7 +127,7 @@ public class AdminController {
                 modelAndView.setViewName("layout-admin/login");
                 return modelAndView;
             }
-            modelAndView.setViewName("layout-admin/home");
+            modelAndView.setViewName("layout-admin/content");
             return modelAndView;
         } catch (Exception e) {
             throw e;
