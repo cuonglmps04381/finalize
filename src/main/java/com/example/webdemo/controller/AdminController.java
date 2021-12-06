@@ -62,7 +62,7 @@ public class AdminController {
     }
 
     @RequestMapping(value = "/admin/registration", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@Valid UserDTO userDTO, BindingResult bindingResult) throws IOException {
+    public ModelAndView createNewUser(@Valid UserDTO userDTO, BindingResult bindingResult) {
         try {
             ModelAndView modelAndView = new ModelAndView();
             boolean valid = checkValidate(userDTO,bindingResult);
@@ -110,12 +110,12 @@ public class AdminController {
             return false;
         }
 
-        if (userDTO.isChecked() == false) {
+       /* if (userDTO.isChecked() == false) {
             bindingResult
                     .rejectValue("checked", "error.userDTO",
                             "pls check");
             return false;
-        }
+        }*/
         return true;
     }
     @RequestMapping(value={"/admin/home"}, method = RequestMethod.GET)

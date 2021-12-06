@@ -1477,6 +1477,13 @@ footer .main-footer .footer-copyright-02 .right ul li {
   font-style: normal;
   font-size: 12px;
   color: #FF1C19;
+  grid-row: 1;
+  top: 22px;
+  height: 100%;
+}
+.group-icon{
+  position: relative;
+  grid-row: 2;
 }
 /*css login and register*/
 /* @extend display-flex; */
@@ -1794,7 +1801,11 @@ figure {
 .form-group {
   position: relative;
   margin-bottom: 25px;
-  overflow: hidden; }
+}
+.form-register{
+  display: grid;
+  grid-template-rows: repeat(2,1fr);
+}
 .form-group:last-child {
   margin-bottom: 0px; }
 
