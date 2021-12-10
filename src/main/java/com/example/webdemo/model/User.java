@@ -45,6 +45,9 @@ public class User {
 	@Column(name = "REMOVAL_FLAG", nullable = false)
 	private Boolean removalFlag;
 
+	@Column(name = "IS_ACTIVE", nullable = false)
+	private Boolean isActive;
+
 	@CreatedBy
 	@Column(name = "CREATED_BY", updatable = false)
 	protected String createdBy;
@@ -66,7 +69,7 @@ public class User {
 	protected Date modifiedDate;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "role_user", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_role"))
+	@JoinTable(name = "role_user", joinColumns = @JoinColumn(name = "id_user",nullable = false), inverseJoinColumns = @JoinColumn(name = "id_role", nullable = false))
 	private Set<Role> roles;
 
 

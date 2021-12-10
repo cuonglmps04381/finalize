@@ -2,8 +2,10 @@ package com.example.webdemo.service.impl;
 
 import com.example.webdemo.model.Role;
 import com.example.webdemo.model.User;
+import com.example.webdemo.model.dto.UserDTO;
 import com.example.webdemo.repository.UserRepository;
 import com.example.webdemo.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,10 +15,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service("userService")
 public class UserServiceImpl implements UserService, UserDetailsService {
@@ -24,10 +24,25 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private ModelMapper modelMapper;
 
 	@Override
-	public User findUserByEmail(String email) {
-		return userRepository.findByEmail(email);
+	public UserDTO findUserByEmail(String email) {
+		User user = userRepository.findByEmail(email);
+		if (Objects.nonNull(user)) {
+			return modelMapper.map(user, UserDTO.class);
+		}
+		return null;
+	}
+
+	@Override
+	public List<UserDTO> getAll() {
+		List<User> lstUser = userRepository.getAll();
+		if (lstUser.size() > 0 && Objects.nonNull(lstUser)) {
+			return lstUser.stream().map(user -> modelMapper.map(user, UserDTO.class)).collect(Collectors.toList());
+		}
+		return null;
 	}
 
 

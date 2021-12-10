@@ -30,3 +30,4 @@ AUTO_INCREMENT = 1;
 create table role_user (id_user bigint not null, id_role bigint not null, primary key (id_user, id_role));
 alter table role_user add constraint FK_role foreign key (id_role) references role (ROLE_ID);
 alter table role_user add constraint FK_user foreign key (id_user) references user (USER_ID);
+alter table user add IS_ACTIVE bigint(1) DEFAULT 0 NOT NULL;

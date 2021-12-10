@@ -1,4 +1,4 @@
-package com.example.webdemo.dto;
+package com.example.webdemo.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,6 +41,7 @@ public class UserDTO {
 
     private Set<RoleDTO> roleDTO;
 
+    private Boolean isActive;
 
     @Override
     public String toString() {

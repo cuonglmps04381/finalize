@@ -212,4 +212,4 @@
     $('.left-sidebar-out .clever-icon-close').on('click', function() {
         $('.left-sidebar-out').hide('slow');
     });
-})($);
+});

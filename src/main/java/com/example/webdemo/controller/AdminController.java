@@ -1,6 +1,6 @@
 package com.example.webdemo.controller;
 
-import com.example.webdemo.dto.UserDTO;
+import com.example.webdemo.model.dto.UserDTO;
 import com.example.webdemo.model.Role;
 import com.example.webdemo.model.User;
 import com.example.webdemo.repository.RoleRepository;
@@ -18,10 +18,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.io.IOException;
+import java.util.Objects;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 
 @Controller
 public class AdminController {
@@ -41,20 +42,20 @@ public class AdminController {
     public ModelAndView login(){
         try {
             ModelAndView modelAndView = new ModelAndView();
-            modelAndView.setViewName("layout-admin/login");
+            modelAndView.setViewName("layout-admin/singin");
             return modelAndView;
         } catch (Exception e) {
             throw e;
         }
     }
 
-    @RequestMapping(value={"/admin/register"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/admin/signup"}, method = RequestMethod.GET)
     public ModelAndView register(){
         try {
             ModelAndView modelAndView = new ModelAndView();
             UserDTO userDTO = new UserDTO();
             modelAndView.addObject("userDTO", userDTO);
-            modelAndView.setViewName("layout-admin/register");
+            modelAndView.setViewName("layout-admin/signup");
             return modelAndView;
         } catch (Exception e) {
             throw e;
@@ -71,7 +72,7 @@ public class AdminController {
                     userCreate.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
                     userCreate.setRemovalFlag(true);
                     Role userRole = roleRepository.findByRoleName("ADMIN");
-                    userCreate.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+                    userCreate.setRoles(null);
                     userCreate.setCreatedDate(new Date());
                     userCreate.setLastName(userDTO.getLastName());
                     userCreate.setEmail(userDTO.getEmail());
@@ -80,13 +81,14 @@ public class AdminController {
                     userCreate.setRemovalFlag(true);
                     userCreate.setModifiedBy("admin");
                     userCreate.setModifiedDate(new Date());
+                    userCreate.setIsActive(true);
                     userRepository.save(userCreate);
                     modelAndView.addObject("successMessage", "User has been registered successfully");
                     modelAndView.addObject("userDTO", new UserDTO());
-                    modelAndView.setViewName("layout-admin/register");
+                    modelAndView.setViewName("layout-admin/signup");
             } else {
                 if (bindingResult.hasErrors()) {
-                    modelAndView.setViewName("layout-admin/register");
+                    modelAndView.setViewName("layout-admin/signup");
                 }
             }
             return modelAndView;
@@ -96,7 +98,7 @@ public class AdminController {
     }
 
     public boolean checkValidate(UserDTO userDTO, BindingResult bindingResult) {
-        User userExists = userService.findUserByEmail(userDTO.getEmail());
+        UserDTO userExists = userService.findUserByEmail(userDTO.getEmail());
         if (userExists != null) {
             bindingResult
                     .rejectValue("email", "error.userDTO",
@@ -124,7 +126,7 @@ public class AdminController {
             ModelAndView modelAndView = new ModelAndView();
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             if (auth == null || auth instanceof AnonymousAuthenticationToken) {
-                modelAndView.setViewName("layout-admin/login");
+                modelAndView.setViewName("layout-admin/singin");
                 return modelAndView;
             }
             modelAndView.setViewName("layout-admin/content");
@@ -133,7 +135,25 @@ public class AdminController {
             throw e;
         }
     }
-
+    @RequestMapping(value={"/admin/account-list"}, method = RequestMethod.GET)
+    public ModelAndView accountList(){
+        try {
+            ModelAndView modelAndView = new ModelAndView();
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            if (auth == null || auth instanceof AnonymousAuthenticationToken) {
+                modelAndView.setViewName("layout-admin/singin");
+                return modelAndView;
+            }
+            List<UserDTO> lstUser = userService.getAll();
+            if (lstUser.size() > 0 && Objects.nonNull(lstUser)) {
+                modelAndView.addObject("lstUser", lstUser);
+            }
+            modelAndView.setViewName("layout-admin/account-admin/account-list");
+            return modelAndView;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
     @RequestMapping(value={"/error"}, method = RequestMethod.GET)
     public ModelAndView error(){
         try {
