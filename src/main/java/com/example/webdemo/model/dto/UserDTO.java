@@ -43,6 +43,8 @@ public class UserDTO {
 
     private Boolean isActive;
 
+    private String token;
+
     @Override
     public String toString() {
         return "User [id=" + id + ", email="

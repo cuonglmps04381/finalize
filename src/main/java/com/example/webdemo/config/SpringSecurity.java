@@ -39,6 +39,7 @@ public class SpringSecurity  extends WebSecurityConfigurerAdapter {
                 authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/admin/**").permitAll()
+                .antMatchers("/s3/**").permitAll()
                 .anyRequest().authenticated().and().csrf().disable().formLogin()
                 .loginPage("/admin").failureUrl("/admin/?error=true")
                 .defaultSuccessUrl("/admin/home")

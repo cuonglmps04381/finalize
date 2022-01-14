@@ -1,20 +1,25 @@
 package com.example.webdemo.controller;
 
+import com.example.webdemo.model.dto.TestDTO;
 import com.example.webdemo.model.dto.UserDTO;
 import com.example.webdemo.model.Role;
 import com.example.webdemo.model.User;
 import com.example.webdemo.repository.RoleRepository;
 import com.example.webdemo.repository.UserRepository;
 import com.example.webdemo.service.UserService;
+import org.apache.coyote.Response;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -38,12 +43,26 @@ public class AdminController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(AdminController.class);
+
     @RequestMapping(value={"/admin", "/admin/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
         try {
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.setViewName("layout-admin/singin");
             return modelAndView;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+    @RequestMapping(value={"/admin/test"}, method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity loginT(@RequestBody TestDTO testDTO){
+        try {
+            UserDTO userDTO = new UserDTO();
+            userDTO.setToken("ADADHUAHJBFI12312312");
+            System.out.println("ffff");
+            return ResponseEntity.ok().body(userDTO);
         } catch (Exception e) {
             throw e;
         }
@@ -72,7 +91,7 @@ public class AdminController {
                     userCreate.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
                     userCreate.setRemovalFlag(true);
                     Role userRole = roleRepository.findByRoleName("ADMIN");
-                    userCreate.setRoles(null);
+                    //userCreate.setRoles(null);
                     userCreate.setCreatedDate(new Date());
                     userCreate.setLastName(userDTO.getLastName());
                     userCreate.setEmail(userDTO.getEmail());
@@ -111,13 +130,6 @@ public class AdminController {
                             "password not match pls change");
             return false;
         }
-
-       /* if (userDTO.isChecked() == false) {
-            bindingResult
-                    .rejectValue("checked", "error.userDTO",
-                            "pls check");
-            return false;
-        }*/
         return true;
     }
     @RequestMapping(value={"/admin/home"}, method = RequestMethod.GET)

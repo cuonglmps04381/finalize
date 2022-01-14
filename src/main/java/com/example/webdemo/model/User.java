@@ -16,6 +16,7 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -69,7 +70,7 @@ public class User {
 	protected Date modifiedDate;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "role_user", joinColumns = @JoinColumn(name = "id_user",nullable = false), inverseJoinColumns = @JoinColumn(name = "id_role", nullable = false))
+	@JoinTable(name = "role_user", joinColumns = @JoinColumn(name = "id_user"), inverseJoinColumns = @JoinColumn(name = "id_role"))
 	private Set<Role> roles;
 
 
